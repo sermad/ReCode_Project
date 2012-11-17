@@ -30,9 +30,6 @@ void setup() {
   //size(1280,720); //720p
   //size(1093, 614); //QFHD
   size(800, 600); //4:3 low res
-  smooth();
-  debug = true;
-  movie = false;
 
   /* What is Quantization? 
    
@@ -60,7 +57,7 @@ void setup() {
    
    */
 
-  original_img = loadImage("data/wehrner.jpg");
+  original_img = loadImage("data/wehrner_resized.jpg");
   original_img.loadPixels();
   quantized_img = new PImage();
   quantized_img.loadPixels();
@@ -110,9 +107,7 @@ void keyPressed() {
   case 's': 
     screenShot();
     break;
-  case 'd': 
-    toggleDebug();
-    break;
+}
 }
 
 void screenShot() {
