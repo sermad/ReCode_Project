@@ -16,14 +16,11 @@ void setup() {
     
     float randomness = 0.03;
     
-    int rot_scale = 1;
-    
     float iw, jh;
    
     size( (canvaswidth+2)*square_size, (canvasheight+2)*square_size );
     
     // set the background of the canvas
-    // remember the tutorial we did on colour
     
     background(#ffffff);
     
@@ -45,23 +42,22 @@ void setup() {
         // move the origin to the pivot point        
         translate((square_size*i), (square_size*j));
     
-    
     // simple algo to increase rotation towards
     // the middle of the grid
     // check for odd or even canvas size to slightly alter the algo
     
-   if(canvasheight % 2 == 0) {
-     iw = canvaswidth/2 - Math.abs(i - canvaswidth/2);
-   } else {
-     iw = canvaswidth/2 - 0.5 - Math.abs(i - canvaswidth/2 - 0.5);
-   }
- 
-  if(canvasheight % 2 == 0) {
-    jh = canvasheight/2 - 0.5 - Math.abs(j - canvasheight/2 + 0.5);
-  } else {
-    jh = canvasheight/2 - Math.abs(j - canvasheight/2);
-  }
-    
+    if(canvasheight % 2 == 0) {
+      iw = canvaswidth/2 - Math.abs(i - canvaswidth/2);
+    } else {
+      iw = canvaswidth/2 - 0.5 - Math.abs(i - canvaswidth/2 - 0.5);
+    }
+   
+    if(canvasheight % 2 == 0) {
+      jh = canvasheight/2 - 0.5 - Math.abs(j - canvasheight/2 + 0.5);
+    } else {
+      jh = canvasheight/2 - Math.abs(j - canvasheight/2);
+    }
+      
     // check if we are not drawing the outer edges
     if( jh != 0 || iw != 0) {
     
@@ -70,15 +66,13 @@ void setup() {
     
     }
     
-      // draw the square at the origin
-      rect(square_size, square_size, square_size, square_size);
+    // draw the square at the origin
+    rect(square_size, square_size, square_size, square_size);
     
-      popMatrix();
+    popMatrix();
     
-      }
- 
     }
-    
-    // finished!
+ 
+  }
     
 }
