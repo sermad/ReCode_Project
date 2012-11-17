@@ -17,9 +17,28 @@
 String sketchname = "wehrner";
 PImage original_img; //the original source image of Von Braun
 
+/*
+//full grey palette
 color[] allowed_colours = {
-  #000000,#222222,#FFFFFF
-};
+ #000000, #080808, #101010, #181818, #202020, 
+ #282828, #303030, #383838, #404040, #484848, 
+ #505050, #585858, #606060, #686868, #707070, 
+ #787878, #808080, #888888, #909090, #989898, 
+ #A0A0A0, #A8A8A8, #B0B0B0, #B8B8B8, #C0C0C0, 
+ #C8C8C8, #D0D0D0, #D8D8D8, #E0E0E0, #E8E8E8, 
+ #F0F0F0, #F8F8F8, #FFFFFF};
+*/
+
+//reduced grey palette
+color[] allowed_colours = {
+ #000000, #080808, #101010, #181818, #202020, 
+ #282828, #303030, #383838, #404040, #484848, 
+ #505050, #585858, #606060, #686868, #707070, 
+ #787878, #808080, #888888, #909090, #989898, 
+ #A0A0A0, #A8A8A8, #FFFFFF};
+ 
+
+
 
 /* ---------------- SETUP ---------------------- */
 
@@ -76,7 +95,7 @@ void setup() {
       float redDistance = red(allowed_colours[y])-red(original_img.pixels[x]);
       float greenDistance = green(allowed_colours[y])-green(original_img.pixels[x]);
       float blueDistance = blue(allowed_colours[y])-blue(original_img.pixels[x]);
-      float colourDistance = abs(redDistance+greenDistance+blueDistance);
+      float colourDistance = abs(sqrt(redDistance+greenDistance+blueDistance));
       //is this the smallest distance we've seen?
       if (colourDistance < minDistance) {
         minDistance = colourDistance;
@@ -93,7 +112,7 @@ void setup() {
 
 void draw() {
   //map the size of the inputted image to our window size
-  image(original_img, 0, 0, map(original_img.width, 0, original_img.width, 0, width),map(original_img.height, 0, original_img.height, 0, height));
+  image(original_img, 0, 0, map(original_img.width, 0, original_img.width, 0, width), map(original_img.height, 0, original_img.height, 0, height));
 }
 
 
@@ -104,7 +123,7 @@ void keyPressed() {
   case 's': 
     screenShot();
     break;
-}
+  }
 }
 
 void screenShot() {
