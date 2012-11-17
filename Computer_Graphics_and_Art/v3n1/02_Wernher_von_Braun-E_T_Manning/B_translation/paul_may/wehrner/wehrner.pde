@@ -17,17 +17,9 @@
 String sketchname = "wehrner";
 PImage original_img; //the original source image of Von Braun
 PImage quantized_img; //where we'll store our quantized image.
-boolean debug;
-boolean movie;
 
 color[] allowed_colours = {
-  #000000, #080808, #101010, #181818, #202020, 
-  #282828, #303030, #383838, #404040, #484848, 
-  #505050, #585858, #606060, #686868, #707070, 
-  #787878, #808080, #888888, #909090, #989898, 
-  #A0A0A0, #A8A8A8, #B0B0B0, #B8B8B8, #C0C0C0, 
-  #C8C8C8, #D0D0D0, #D8D8D8, #E0E0E0, #E8E8E8, 
-  #F0F0F0, #F8F8F8, #FFFFFF
+  #000000,#222222,#FFFFFF
 };
 
 /* ---------------- SETUP ---------------------- */
@@ -97,6 +89,7 @@ void setup() {
         minIndex = y;
       }
     }
+    //set the colour of the pixel in the image to the colour in our allowed colours
     original_img.pixels[x] = allowed_colours[minIndex];
   }
 }
@@ -105,7 +98,8 @@ void setup() {
 
 
 void draw() {
-  image(original_img, 0, 0);
+  //map the size of the inputted image to our window size
+  image(original_img, 0, 0, map(original_img.width, 0, original_img.width, 0, width),map(original_img.height, 0, original_img.height, 0, height));
 }
 
 
@@ -119,23 +113,6 @@ void keyPressed() {
   case 'd': 
     toggleDebug();
     break;
-  case 'm': 
-    toggleMovie();
-    break;
-  }
-}
-
-void mousePressed() {
-}
-
-void toggleDebug() {
-  debug = !debug;
-  println("debugging: "+debug);
-}
-
-void toggleMovie() {
-  movie = !movie;
-  println("movie: "+movie);
 }
 
 void screenShot() {
