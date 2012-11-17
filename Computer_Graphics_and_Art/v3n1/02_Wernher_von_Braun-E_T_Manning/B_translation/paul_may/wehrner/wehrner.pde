@@ -16,7 +16,6 @@
 
 String sketchname = "wehrner";
 PImage original_img; //the original source image of Von Braun
-PImage quantized_img; //where we'll store our quantized image.
 
 color[] allowed_colours = {
   #000000,#222222,#FFFFFF
@@ -59,8 +58,6 @@ void setup() {
 
   original_img = loadImage("data/wehrner_resized.jpg");
   original_img.loadPixels();
-  quantized_img = new PImage();
-  quantized_img.loadPixels();
 
   /* Now that we have the image, 
    loop through each pizel of the image
