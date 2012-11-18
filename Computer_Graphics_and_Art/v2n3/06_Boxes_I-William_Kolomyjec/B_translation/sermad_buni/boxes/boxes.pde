@@ -17,8 +17,11 @@ void setup() {
     float randomness = 0.03;
     
     float iw, jh;
+    
+    smooth(8);
    
-    size( (canvaswidth+2)*square_size, (canvasheight+2)*square_size );
+    // set the size of the canvas
+    size( (canvaswidth+2)*square_size, (canvasheight+2)*square_size, P2D );
     
     // set the background of the canvas
     
@@ -33,9 +36,9 @@ void setup() {
     
     // we need to make a loop in a loop 
     
-    for(int i=0; i<canvaswidth; i++) {
+    for(int i=0; i < canvaswidth; i++) {
     
-    for(int j=0; j<canvasheight; j++) {
+    for(int j=0; j < canvasheight; j++) {
     
         pushMatrix();
     
